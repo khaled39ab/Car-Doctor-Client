@@ -11,7 +11,7 @@ const Header = () => {
         <li><Link to={'/'}>Contact</Link></li>
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar h-20 bg-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -31,7 +31,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to={'/'} className="btn">Get started</Link>
+                <Link to={'/'} className="btn btn-secondary">Appointment</Link>
             </div>
         </div>
     );

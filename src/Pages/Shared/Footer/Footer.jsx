@@ -4,9 +4,9 @@ import logo from '../../../assets/logo.svg'
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-base-200 text-base-content">
+        <footer className="footer p-28 bg-slate-700 text-white">
             <div>
-                <img src={logo} alt="" />
+                <img className='bg-white' src={logo} alt="" />
                 <p>Motor Service Co.<br />Providing reliable Motor since 2020</p>
             </div>
             <div>
