@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      maxHeight: {
+        '80vh': '80vh',
+      }
+    },
   },
   plugins: [require("daisyui")],
 }
