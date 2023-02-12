@@ -1,13 +1,13 @@
 import React from 'react';
+import './Carousel.css'
 
 const Carousel = ({slide}) => {
     const {id, image, prev, next} = slide;
-    // console.log(id, image, prev, next);
-
+    
     return (
         <div id={`slide${id}`} className="carousel-item relative w-full">
             <div className='carousel-img'>
-                <img src={image} alt='' className="w-full" />
+                <img src={image} alt='' className="w-full rounded-2xl" />
             </div>
             <div className="absolute flex justify-start transform -translate-y-1/2 left-20 top-1/4">
                 <h1 className='lg:text-5xl md:text-3xl sm:text-2xl font-bold text-white'>
