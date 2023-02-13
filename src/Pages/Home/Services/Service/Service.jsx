@@ -4,14 +4,14 @@ const Service = ({service}) => {
     const {title, img, price} = service;
     return (
         <div className="card  w-72 h-full bg-gray-200 shadow-xl">
-            <figure><img className='w-11/12 mt-3' src={img} alt="Shoes" /></figure>
+            <figure><img className='w-11/12 my-4' src={img} alt="servicing" /></figure>
             <div className="card-body">
-                <h2 className="card-title">
+                <h2 className="card-title absolute flex justify-start left-5 top-3/4">
                     {title}
                 </h2>
-                <div className="card-actions justify-between">
-                    <p className="text-orange-600">Price: ${price}</p>
-                    <div className="badge badge-outline">❯</div>
+                <div className="card-actions flex justify-between absolute  transform -translate-y-1/2 left-5 right-5 bottom-0">
+                    <p className="text-red-400 font-bold">Price: ${price}</p>
+                    <div className="badge badge-outline bg-red-500 border-none text-white cursor-pointer">❯</div>
                 </div>
             </div>
         </div>
