@@ -1,6 +1,6 @@
 import React from 'react';
 import img1 from '../../../../assets/images/products/1.png';
-import star from '../../../../assets/images/products/star.svg'
+import star from '../../../../assets/images/products/star.svg';
 
 const Product = () => {
     return (
