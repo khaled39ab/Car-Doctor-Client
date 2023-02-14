@@ -12,19 +12,57 @@ const Testimonial = () => {
                 <p className='w-3/5 mx-auto'>The majority have suffered alteration in some form, by injected humour, or randomized words which don't look even slightly believable. </p>
             </div>
             <div className='my-6 relative flex justify-center w-full'>
-                
-                <div className="card w-96 bg-base-100 shadow-xl py-5 px-8">
+                <div className="card w-96 bg-base-100 shadow-xl py-5 px-8 mr-5">
                     <div className="card-body">
-                        <h2 className="card-title">Card title!</h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Buy Now</button>
+                        <div className='flex justify-between'>
+                            <div className='flex'>
+                                <div className='mr-3 h-12 w-10 pt-2'>
+                                    <img className=' rounded-full w-full h-full' src={person} alt="" />
+                                </div>
+                                <div>
+                                    <h3 className="card-title">Awlad Hossain</h3>
+                                    <p className="">Businessman</p>
+                                </div>
+                            </div>
+                            <img className='h-12 bg-red-300 opacity-20 p-2 rounded-md' src={quote} alt="" />
+                        </div>
+                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomized words which don't look even slightly believable. </p>
+                        <div className="card-actions justify-start flex">
+                            <img src={star} alt="" />
+                            <img src={star} alt="" />
+                            <img src={star} alt="" />
+                            <img src={star} alt="" />
+                            <img src={star} alt="" />
+                        </div>
+                    </div>
+                </div>
+                <div className="card w-96 bg-base-100 shadow-xl py-5 px-8 mr-5">
+                    <div className="card-body">
+                        <div className='flex justify-between'>
+                            <div className='flex'>
+                                <div className='mr-3 h-12 w-10 pt-2'>
+                                    <img className=' rounded-full w-full h-full' src={person} alt="" />
+                                </div>
+                                <div>
+                                    <h3 className="card-title">Awlad Hossain</h3>
+                                    <p className="">Businessman</p>
+                                </div>
+                            </div>
+                            <img className='h-12 bg-red-300 opacity-20 p-2 rounded-md' src={quote} alt="" />
+                        </div>
+                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomized words which don't look even slightly believable. </p>
+                        <div className="card-actions justify-start flex">
+                            <img src={star} alt="" />
+                            <img src={star} alt="" />
+                            <img src={star} alt="" />
+                            <img src={star} alt="" />
+                            <img src={star} alt="" />
                         </div>
                     </div>
                 </div>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide4" className="btn btn-circle">❮</a>
-                    <a href="#slide2" className="btn btn-circle">❯</a>
+                    <a href="/" className="btn btn-circle">❮</a>
+                    <a href="/" className="btn btn-circle bg-red-500">❯</a>
                 </div>
             </div>
         </div>
