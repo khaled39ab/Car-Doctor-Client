@@ -1,4 +1,10 @@
 import React from 'react';
+import img1 from '../../../../assets/images/products/1.png';
+import img2 from '../../../../assets/images/products/2.png';
+import img3 from '../../../../assets/images/products/3.png';
+import img4 from '../../../../assets/images/products/4.png';
+import img5 from '../../../../assets/images/products/5.png';
+import img6 from '../../../../assets/images/products/6.png';
 import Product from '../Product/Product';
 
 const Products = () => {
@@ -15,7 +21,7 @@ const Products = () => {
                 }
             </div>
             <div className='text-center my-10'>
-                <button className="btn btn-outline btn-secondary">More Services</button>
+                <button className="btn btn-outline btn-secondary">More Products</button>
             </div>
         </div>
     );
