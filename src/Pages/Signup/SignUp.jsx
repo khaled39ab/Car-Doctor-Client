@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import loginImg from '../../assets/images/login/login.svg'
+import { AuthContext } from '../../Context/UserContext/UserContext';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const SignUp = () => {
+
+    const { passwordLogin } = useContext(AuthContext);
+
     const handleSignUp = e => {
         e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        passwordLogin(email, password)
+            .then(res => console.log(res.user))
+            .catch(err => console.error(err.message))
     }
 
     return (
@@ -34,7 +44,7 @@ const SignUp = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" />
-                           
+
                         </div>
                         <div className="form-control mt-3">
                             <input type="submit" value="SIGN UP" className="btn btn-primary" />
