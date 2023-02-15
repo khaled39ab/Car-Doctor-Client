@@ -1,7 +1,7 @@
 import React from 'react';
 import star from '../../../assets/images/products/star.svg';
 import quote from '../../../assets/icons/quote.svg';
-import person from '../../../assets/images/quote-person.jpg'
+import person from '../../../assets/images/others/quote-person.jpg'
 
 const Testimonial = () => {
     return (

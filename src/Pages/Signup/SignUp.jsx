@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import loginImg from '../../assets/images/login/login.svg'
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const SignUp = () => {
     const handleSignUp = e => {
@@ -13,7 +14,7 @@ const SignUp = () => {
                 <div className="text-center lg:text-left">
                     <img src={loginImg} alt="" />
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-14">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-5">
                     <h1 className="text-4xl font-semibold text-center">Please Sign Up</h1>
                     <form onSubmit={handleSignUp} className="card-body">
                         <div className="form-control">
@@ -33,14 +34,16 @@ const SignUp = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" />
-                            <label className="label flex justify-end">
-                                <Link to={''} className="mt-3 text-red-600 label-text-alt link link-hover">Forgot password?</Link>
-                            </label>
+                           
                         </div>
                         <div className="form-control mt-3">
-                            <input type="submit" value="LOGIN" className="btn btn-primary" />
+                            <input type="submit" value="SIGN UP" className="btn btn-primary" />
                         </div>
                     </form>
+                    <div>
+                        <SocialLogin />
+                        <p className='text-center'>Have an account?<Link className='btn btn-link' to={'/login'}>Login</Link></p>
+                    </div>
                 </div>
             </div>
         </div>

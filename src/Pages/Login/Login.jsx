@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import loginImg from '../../assets/images/login/login.svg'
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const handleLogin = e => {
@@ -14,7 +15,7 @@ const Login = () => {
                 <div className="text-center lg:text-left">
                     <img src={loginImg} alt="" />
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-14">
+                <div className="card w-full max-w-sm shadow-2xl bg-base-100 py-5">
                     <h1 className="text-5xl font-bold text-center">Login</h1>
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
@@ -36,6 +37,10 @@ const Login = () => {
                             <input type="submit" value="LOGIN" className="btn btn-primary" />
                         </div>
                     </form>
+                    <div>
+                        <SocialLogin />
+                        <p className='text-center'>Create an account?<Link className='btn btn-link' to={'/signup'}>Sign Up</Link></p>
+                    </div>
                 </div>
             </div>
         </div>
