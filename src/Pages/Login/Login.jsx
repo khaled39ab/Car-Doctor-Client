@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import loginImg from '../../assets/images/login/login.svg'
+import { AuthContext } from '../../Context/UserContext/UserContext';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
+    const { passwordLogin } = useContext(AuthContext);
+
     const handleLogin = e => {
         e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
 
+        passwordLogin(email, password)
+            .then(res => console.log(res.user))
+            .catch(err => console.log(err.message))
     }
 
     return (

@@ -6,17 +6,17 @@ import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const SignUp = () => {
 
-    const { passwordLogin } = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
 
     const handleSignUp = e => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        passwordLogin(email, password)
+        createUser(email, password)
             .then(res => console.log(res.user))
             .catch(err => console.error(err.message))
-    }
+    };
 
     return (
         <div className="hero min-h-screen bg-base-200" data-theme="light">
