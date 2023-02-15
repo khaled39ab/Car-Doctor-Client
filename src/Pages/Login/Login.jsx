@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import loginImg from '../../assets/images/login/login.svg'
 import { AuthContext } from '../../Context/UserContext/UserContext';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const { passwordLogin } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleLogin = e => {
         e.preventDefault();
@@ -13,9 +15,15 @@ const Login = () => {
         const password = e.target.password.value;
 
         passwordLogin(email, password)
-            .then(res => console.log(res.user))
-            .catch(err => console.log(err.message))
-    }
+            .then(res => {
+                // console.log(res.user)
+                navigate('/')
+            })
+            .catch(err => {
+                const errorMe = (err.message)
+                setError(errorMe)
+            })
+    };
 
     return (
         <div className="hero min-h-screen bg-base-200" data-theme="light">
@@ -38,9 +46,12 @@ const Login = () => {
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" />
                             <label className="label flex justify-end">
-                                <Link to={''} className="mt-3 text-red-600 label-text-alt link link-hover">Forgot password?</Link>
+                                <Link to={''} className="mt-3 text-blue-800 label-text-alt link link-hover">Forgot password?</Link>
                             </label>
                         </div>
+                        {
+                            error && <div className='error-message'>({error.split('/')[1]}</div>
+                        }
                         <div className="form-control mt-3">
                             <input type="submit" value="LOGIN" className="btn btn-primary" />
                         </div>
