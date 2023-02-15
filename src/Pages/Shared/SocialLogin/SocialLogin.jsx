@@ -49,7 +49,7 @@ const SocialLogin = () => {
     return (
         <div className='text-center'>
             {
-                error && <div className='error-message'>({error.split('/')[1]}</div>
+                error && <div className='text-red-500'>({error.split('/')[1]}</div>
             }
             <p className='underline'>Or Sign In with</p>
             <div className='flex justify-center my-5'>

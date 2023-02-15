@@ -55,7 +55,7 @@ const SignUp = () => {
 
                         </div>
                         {
-                            error && <div className='error-message'>({error.split('/')[1]}</div>
+                            error && <div className='text-red-500'>({error.split('/')[1]}</div>
                         }
                         <div className="form-control mt-3">
                             <input type="submit" value="SIGN UP" className="btn btn-primary" />
