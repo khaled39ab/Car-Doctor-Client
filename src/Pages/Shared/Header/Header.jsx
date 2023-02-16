@@ -41,7 +41,7 @@ const Header = () => {
             <div className="navbar-end">
                 {
                     user ?
-                        <button onClick={handleLogOut} to={''} className="btn btn-outline btn-secondary">Log Out</button>
+                        <button onClick={handleLogOut} className="btn btn-outline btn-secondary">Log Out</button>
                         :
                         <Link to={'/login'} className="btn btn-outline btn-secondary">Log In</Link>
                 }
