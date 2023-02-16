@@ -3,8 +3,12 @@ import React from 'react';
 const ServiceItem = ({service}) => {
     return (
         <div>
-            <div className="grid h-20 card bg-base-300 rounded-box place-items-center">{service.title}</div>
-            <div className="divider"></div>
+            <div className="rounded-md py-4 px-10 bg-white my-4">
+                <div className='flex justify-between'>
+                    <h1 className='font-bold'>{service.title}</h1>
+                    <p className='text-[#ff3811] text-xl'>❯</p>
+                </div>
+            </div>
         </div>
     );
 };

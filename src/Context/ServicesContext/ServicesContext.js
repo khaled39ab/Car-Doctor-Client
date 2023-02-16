@@ -5,17 +5,18 @@ import { createContext } from "react";
 export const ItemsContext = createContext();
 
 const ServicesContext = ({children}) => {
-    const [serviceModule, setServiceModule] = useState({});
+    const [services, setServices] = useState([]);
 
     useEffect(() => {
         fetch('services.json')
             .then(res => res.json())
-            .then(data => setServiceModule(data))
+            .then(data => setServices(data))
+            .catch(err => console.log(err))
     }, []);
 
 
     const ItemsInfo = {
-        serviceModule
+        services
     }
 
     return (

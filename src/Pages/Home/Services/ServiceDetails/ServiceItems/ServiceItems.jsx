@@ -4,17 +4,18 @@ import ServiceItem from './ServiceItem';
 
 const ServiceItems = () => {
 
-    const { serviceModule } = useContext(ItemsContext);
-    console.log(serviceModule);
+    const { services } = useContext(ItemsContext);
 
     return (
-        <div className="flex flex-col w-full">
-            {
-                serviceModule.map(service => <ServiceItem
-                    key={service._id}
-                    service = {service}
-                ></ServiceItem>)
-            }
+        <div className='my-5 lg:my-10'>
+            <div className="flex flex-col w-full bg-base-200 p-10">
+                {
+                    services.map(service => <ServiceItem
+                        key={service._id}
+                        service={service}
+                    ></ServiceItem>)
+                }
+            </div>
         </div>
     );
 };

@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
+import { ItemsContext } from '../../../../Context/ServicesContext/ServicesContext';
 import Service from '../Service/Service';
 
 const Services = () => {
-    const [services, setServices] = useState([]);
 
-    useEffect(() => {
-        fetch('services.json')
-            .then(res => res.json())
-            .then(data => setServices(data))
-    }, []);
+    const { services } = useContext(ItemsContext);
 
     return (
         <div className="py-10 bg-neutral-100">
