@@ -2,26 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { createContext } from "react";
 
 
-export const ServiceContext = createContext();
+export const ItemsContext = createContext();
 
 const ServicesContext = ({children}) => {
-    const [serviceModule, setServicesModule] = useState({});
+    const [serviceModule, setServiceModule] = useState({});
 
     useEffect(() => {
         fetch('services.json')
             .then(res => res.json())
-            .then(data => setServicesModule(data))
+            .then(data => setServiceModule(data))
     }, []);
 
 
-    const ServiceInfo = {
+    const ItemsInfo = {
         serviceModule
     }
 
     return (
-        <ServiceContext.Provider value={ServiceInfo}>
+        <ItemsContext.Provider value={ItemsInfo}>
             {children}
-        </ServiceContext.Provider>
+        </ItemsContext.Provider>
     );
 };
 
