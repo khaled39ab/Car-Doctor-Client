@@ -5,7 +5,7 @@ import Services from '../Services/Services/Services';
 import Contact from '../Contact/Contact';
 import Products from '../Products/Products/Products';
 import Testimonial from '../Testimonial/Testimonial';
-import ServiceBanner from '../../Shared/ServiceBanner/ServiceBanner';
+import ServiceItems from '../Services/ServiceDetails/ServiceItems/ServiceItems';
 
 const Home = () => {
     return (
@@ -16,7 +16,7 @@ const Home = () => {
             <Contact />
             <Products />
             <Testimonial />
-            <ServiceBanner pageName="Service Details"/>
+            <ServiceItems />
         </div>
     );
 };

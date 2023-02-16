@@ -7,6 +7,9 @@ module.exports = {
     extend: {
       maxHeight: {
         '80vh': '80vh',
+      },
+      colors: {
+        vividRed: '#ff3811',
       }
     },
   },

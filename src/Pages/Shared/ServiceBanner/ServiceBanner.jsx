@@ -13,7 +13,7 @@ const ServiceBanner = ({pageName}) => {
                     {pageName}
                 </h1>
             </div>
-            <div className="absolute left-2/4 bottom-0 bg-rose-500 px-5 py-1 rounded-t-box">
+            <div className="absolute left-2/4 bottom-0 bg-[#ff3811] px-5 py-1 rounded-t-box">
                 <p className='text-white'>
                     Home/ {pageName}
                 </p>
