@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { ItemsContext } from '../../../../Context/ServicesContext/ServicesContext';
 import Product from '../Product/Product';
 
@@ -21,7 +22,7 @@ const Products = () => {
                 }
             </div>
             <div className='text-center my-10'>
-                <button className="btn btn-outline btn-secondary">More Products</button>
+                <button className="btn btn-outline btn-secondary"><Link to={'/products'}>More Products</Link></button>
             </div>
         </div>
     );
