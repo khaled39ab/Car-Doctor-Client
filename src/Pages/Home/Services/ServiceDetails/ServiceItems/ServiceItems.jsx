@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { ItemsContext } from '../../../../../Context/ServicesContext/ServicesContext';
-import ServiceItem from './ServiceItem';
+import ServiceItem from '../ServiceItems/ServiceItem/ServiceItem';
 
 const ServiceItems = () => {
 
