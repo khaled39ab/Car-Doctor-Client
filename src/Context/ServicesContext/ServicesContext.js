@@ -4,11 +4,11 @@ import { createContext } from "react";
 
 export const ItemsContext = createContext();
 
-const ServicesContext = ({children}) => {
+const ServicesContext = ({ children }) => {
     const [services, setServices] = useState([]);
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        // fetch('services.json')
         fetch('http://localhost:4000/services')
             .then(res => res.json())
             .then(data => setServices(data))
@@ -16,8 +16,16 @@ const ServicesContext = ({children}) => {
     }, []);
 
 
+    useEffect(() => {
+        fetch('http://localhost:4000/products')
+            .then(res => res.json())
+            .then(data => setProducts(data))
+    }, []);
+
+
     const ItemsInfo = {
-        services
+        services,
+        products
     }
 
     return (
