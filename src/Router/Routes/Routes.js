@@ -8,6 +8,7 @@ import Products from "../../Pages/Home/Products/Products/Products";
 import ServiceDetails from "../../Pages/Home/Services/ServiceDetails/ServiceDetails";
 import Services from "../../Pages/Home/Services/Services/Services";
 import Login from "../../Pages/Login/Login";
+import NotFound from "../../Pages/NotFound/NotFound";
 import SignUp from "../../Pages/Signup/SignUp";
 
 const router = createBrowserRouter([
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp />
+            },
+            {
+                path: '*',
+                element: <NotFound />
             },
         ]
     }
