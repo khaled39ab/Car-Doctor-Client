@@ -4,7 +4,7 @@ import './ServiceBanner.css';
 
 const ServiceBanner = ({pageName}) => {
     return (
-        <div className="carousel w-full relative my-12">
+        <div className="carousel w-full relative ">
             <div className="carousel-item w-full banner-img">
                 <img src={img} alt='' className="w-full" />
             </div>

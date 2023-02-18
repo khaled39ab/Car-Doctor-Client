@@ -2,31 +2,31 @@
     {
         "title": "Disc Brakes",
         "img": "https://i.ibb.co/92QVHMP/1.png",
-        "price": 150
+        "price": "150"
     },
     {
         "title": "Car Engine Plug",
         "img": "https://i.ibb.co/2ZNsKkw/6.png",
-        "price": 30
+        "price": "30"
     },
     {
         "title": "Car Suspension",
         "img": "https://i.ibb.co/ZXvRpjV/2.png",
-        "price": 250
+        "price": "250"
     },
     {
         "title": "Car Air Filter",
         "img": "https://i.ibb.co/Zcx0Nrs/3.png",
-        "price": 50
+        "price": "50"
     },
     {
         "title": "Car Auto battery",
         "img": "https://i.ibb.co/qr39Rx0/4.png",
-        "price": 200
+        "price": "200"
     },
     {
         "title": "Car Radial Tires",
         "img": "https://i.ibb.co/XYCbBGf/5.png",
-        "price": 120
+        "price": "120"
     }
 ]
