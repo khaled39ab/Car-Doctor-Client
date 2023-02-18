@@ -6,7 +6,6 @@ import ServiceInfo from './ServiceInfo/ServiceInfo';
 
 const ServiceDetails = () => {
     const service = useLoaderData();
-    console.log(service);
 
     return (
         <div className='grid grid-cols-3 p-5'>

@@ -1,15 +1,25 @@
-import React, { useContext } from 'react';
-import { ItemsContext } from '../../../../../Context/ServicesContext/ServicesContext';
+import React from 'react';
+import Facility from './Facility/Facility';
 
-const ServiceInfo = ({service}) => {
-    const {title, img} = service;
+const ServiceInfo = ({ service }) => {
+    const { title, img, description, facility } = service;
 
     return (
-        <div className="card card-compact w-full bg-base-200 shadow-xl my-5 lg:my-10 p-5">
+        <div className="card card-compact w-full bg-gray-200 shadow-xl my-5 lg:my-10 p-5">
             <figure><img src={img} alt="img" /></figure>
             <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <div>
+                    <h2 className="card-title text-3xl font-bold">{title}</h2>
+                    <p className='leading-7'>{description}</p>
+                </div>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                    {
+                        facility.map((facilities, index) => <Facility
+                            key={index}
+                            facilities={facilities}
+                        ></Facility>)
+                    }
+                </div>
             </div>
         </div>
     );
