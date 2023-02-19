@@ -10,6 +10,7 @@ import Services from "../../Pages/Home/Services/Services/Services";
 import Login from "../../Pages/Login/Login";
 import NotFound from "../../Pages/NotFound/NotFound";
 import SignUp from "../../Pages/Signup/SignUp";
+import RequireAuth from "../RequireAuth/RequireAuth";
 
 const router = createBrowserRouter([
     {
@@ -35,11 +36,11 @@ const router = createBrowserRouter([
             {
                 path: '/service/:id',
                 element: <ServiceDetails />,
-                loader: ({params}) =>fetch(`http://localhost:4000/service/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:4000/service/${params.id}`)
             },
             {
                 path: '/checkout',
-                element: <Checkout />
+                element: <RequireAuth><Checkout /></RequireAuth>
             },
             {
                 path: '/contact',

@@ -5,6 +5,7 @@ import auth from "../../firebase/firebase.config";
 export const AuthContext = createContext();
 
 const UserContext = ({ children }) => {
+    
     const [user, setUser] = useState({});
 
     const googleProvider = new GoogleAuthProvider();
@@ -31,7 +32,7 @@ const UserContext = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     };
 
-    const logOut = () =>{
+    const logOut = () => {
         return signOut(auth)
     }
 

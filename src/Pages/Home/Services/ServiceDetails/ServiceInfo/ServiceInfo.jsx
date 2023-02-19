@@ -3,8 +3,7 @@ import Facility from './Facility/Facility';
 
 const ServiceInfo = ({ service }) => {
     const { title, img, description, facility } = service;
-
-    console.log(title, img, description, facility);
+    
     return (
         <div className="card card-compact w-full bg-gray-200 shadow-xl my-5 lg:my-10 p-5">
             <figure><img src={img} alt="img" /></figure>

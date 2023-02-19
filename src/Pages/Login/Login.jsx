@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImg from '../../assets/images/login/login.svg'
 import { AuthContext } from '../../Context/UserContext/UserContext';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
@@ -8,6 +8,9 @@ const Login = () => {
     const { passwordLogin } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
+    
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogin = e => {
         e.preventDefault();
@@ -17,7 +20,7 @@ const Login = () => {
         passwordLogin(email, password)
             .then(res => {
                 // console.log(res.user)
-                navigate('/')
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 const errorMe = (err.message)

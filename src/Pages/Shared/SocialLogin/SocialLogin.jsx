@@ -3,18 +3,22 @@ import facebook from '../../../assets/images/social icons/facebook.svg';
 import google from '../../../assets/images/social icons/google.svg';
 import github from '../../../assets/images/social icons/github.svg';
 import { AuthContext } from '../../../Context/UserContext/UserContext';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    
     const { googleLogin, githubLogin, facebookLogin } = useContext(AuthContext);
     const [error, setError] = useState('');
-    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || "/";
+
 
     const handleFacebookLogin = () => {
         facebookLogin()
             .then(res => {
-                // console.log(res.user)
-                navigate('/')
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 const errorMe = (err.message)
@@ -25,8 +29,7 @@ const SocialLogin = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(res => {
-                // console.log(res.user)
-                navigate('/')
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 const errorMe = (err.message)
@@ -37,8 +40,7 @@ const SocialLogin = () => {
     const handleGithubLogin = () => {
         githubLogin()
             .then(res => {
-                // console.log(res.user)
-                navigate('/')
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 const errorMe = (err.message)
