@@ -45,7 +45,7 @@ const Checkout = () => {
         });
 
         form.reset();
-        toast('Thanks for confirm')
+        toast('Thanks for Your Order')
         navigate('/services')
     };
 

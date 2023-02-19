@@ -9,6 +9,7 @@ import ServiceDetails from "../../Pages/Home/Services/ServiceDetails/ServiceDeta
 import Services from "../../Pages/Home/Services/Services/Services";
 import Login from "../../Pages/Login/Login";
 import NotFound from "../../Pages/NotFound/NotFound";
+import Orders from "../../Pages/Orders/Orders";
 import SignUp from "../../Pages/Signup/SignUp";
 import RequireAuth from "../RequireAuth/RequireAuth";
 
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp />
+            },
+            {
+                path: '/orders',
+                element: <Orders />
             },
             {
                 path: '*',

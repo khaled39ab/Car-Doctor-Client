@@ -5,10 +5,12 @@ import { AuthContext } from '../../../Context/UserContext/UserContext';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
-    // console.log(user);
+
+    const name = (user?.displayName)?.split(' ')[0];
+    const img = user?.photoURL;
 
     const handleLogOut = () => {
-        logOut()
+        logOut();
     }
 
     const itemMenu = <>
@@ -41,7 +43,18 @@ const Header = () => {
             <div className="navbar-end">
                 {
                     user ?
-                        <button onClick={handleLogOut} className="btn btn-outline btn-secondary">Log Out</button>
+                        <div className="dropdown dropdown-bottom dropdown-end">
+                            <label tabIndex={0} className="btn btn-outline rounded-btn">
+                                <img className='h-8 rounded-full mr-2' src={img} alt="" />
+                                {name}
+                                <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+                            </label>
+                            <ul tabIndex={0} className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-1 font-bold">
+                                <li><Link to={'/orders'}>Orders</Link></li>
+                                <li><Link to={'/update'}>Update Profile</Link></li>
+                                <li><button onClick={handleLogOut} className="btn  btn-secondary">Log Out</button></li>
+                            </ul>
+                        </div>
                         :
                         <Link to={'/login'} className="btn btn-outline btn-secondary">Log In</Link>
                 }
