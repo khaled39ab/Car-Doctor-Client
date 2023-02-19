@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import logo from '../../../assets/logo.svg'
 
 const Footer = () => {
     return (
         <footer className="footer p-28 bg-slate-700 text-white">
+            <ToastContainer />
             <div>
                 <img className='bg-white' src={logo} alt="" />
                 <p>Car Doctor (Servicing) Co.<br />Providing reliable service since 2020</p>

@@ -1,14 +1,18 @@
-import React, { useContext } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../Context/UserContext/UserContext';
 import ServiceBanner from '../Shared/ServiceBanner/ServiceBanner';
 
 const Checkout = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const { title, price } = location.state;
 
     const { user } = useContext(AuthContext);
     const { displayName, email } = user;
+
+    const [wrong, setWrong] = useState(false);
 
 
     const handlePlaceOrder = e => {
@@ -18,6 +22,10 @@ const Checkout = () => {
         const phone = form.phone.value;
         const address = form.address.value;
         const message = form.message.value;
+
+        if (phone.length < 10) {
+            return setWrong(true)
+        };
 
         const order = {
             name: displayName,
@@ -37,6 +45,8 @@ const Checkout = () => {
         });
 
         form.reset();
+        toast('Thanks for confirm')
+        navigate('/services')
     };
 
     return (
@@ -53,7 +63,10 @@ const Checkout = () => {
 
                         <input defaultValue={`Service: $${price}`} type="text" placeholder="Price" className="input input-bordered w-full" readOnly />
 
-                        <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full" required />
+                        <input name='phone' type="number" placeholder="Phone Number" className="input input-bordered w-full" required />
+                        {
+                            wrong && <p className='text-red-600'><small>Phone Number Invalid</small></p>
+                        }
 
                         <input name='address' type="text" placeholder="Your Address" className="input input-bordered w-full" />
                     </div>

@@ -6,7 +6,7 @@ function App() {
   return (
     <div className='max-w-5xl mx-auto' data-theme="autumn">
       <RouterProvider router={router}>
-
+        
       </RouterProvider>
     </div>
   );

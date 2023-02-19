@@ -6,10 +6,11 @@ import { AuthContext } from '../../Context/UserContext/UserContext';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const SignUp = () => {
-
     const { createUser, addDisplayName } = useContext(AuthContext);
-    const [error, setError] = useState('');
     const navigate = useNavigate();
+
+    const [error, setError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
 
     const handleSignUp = e => {
         e.preventDefault();
@@ -19,6 +20,12 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+        if (!/[a-zA-Z0-9@$!%*?&]{6,}/.test(password)) {
+            setPasswordError(true)
+        } else {
+            setPasswordError(false)
+        }
+
         createUser(email, password)
             .then(res => {
 
@@ -26,9 +33,9 @@ const SignUp = () => {
                     .then(() => {
                         toast("Check your mail and verify.")
                     })
-                    
+
                 navigate('/')
-                
+
             })
             .catch(err => {
                 const errorMe = (err.message)
@@ -62,7 +69,9 @@ const SignUp = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" />
-
+                            {
+                                passwordError && <p className='text-red-600'><small>Password Must be 6 Character</small></p>
+                            }
                         </div>
                         {
                             error && <div className='text-red-500'>({error.split('/')[1]}</div>
