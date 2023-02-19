@@ -5,15 +5,38 @@ import ServiceBanner from '../Shared/ServiceBanner/ServiceBanner';
 
 const Checkout = () => {
     const location = useLocation();
-
     const { title, price } = location.state;
+
     const { user } = useContext(AuthContext);
     const { displayName, email } = user;
 
-    
+
     const handlePlaceOrder = e => {
         e.preventDefault();
 
+        const form = e.target;
+        const phone = form.phone.value;
+        const address = form.address.value;
+        const message = form.message.value;
+
+        const order = {
+            name: displayName,
+            service: title,
+            email,
+            phone,
+            address,
+            message
+        };
+
+        fetch('http://localhost:4000/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(order)
+        });
+
+        form.reset();
     };
 
     return (
@@ -30,12 +53,12 @@ const Checkout = () => {
 
                         <input defaultValue={`Service: $${price}`} type="text" placeholder="Price" className="input input-bordered w-full" readOnly />
 
-                        <input type="text" placeholder="Phone Number" className="input input-bordered w-full" required />
+                        <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full" required />
 
-                        <input type="text" placeholder="Your Address" className="input input-bordered w-full" />
+                        <input name='address' type="text" placeholder="Your Address" className="input input-bordered w-full" />
                     </div>
 
-                    <textarea placeholder="Message" className="textarea textarea-bordered textarea-lg w-full mt-5" ></textarea>
+                    <textarea name='message' placeholder="Message" className="textarea textarea-bordered textarea-lg w-full mt-5" ></textarea>
 
                     <button type='submit' className="btn btn-block mt-7 bg-[#ff3811]">Order Confirm</button>
                 </form>
