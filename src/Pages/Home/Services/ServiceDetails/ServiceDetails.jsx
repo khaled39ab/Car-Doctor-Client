@@ -7,11 +7,11 @@ import ServiceInfo from './ServiceInfo/ServiceInfo';
 
 const ServiceDetails = () => {
     const service = useLoaderData();
-    const { price } = service;
+    const { title, price } = service;
 
     return (
         <div>
-            <ServiceBanner pageName={"Service Details"}/>
+            <ServiceBanner pageName={"Service Details"} />
             <div className='grid grid-cols-3 px-5'>
                 <div className='col-span-2 mr-3'>
                     <ServiceInfo service={service} />
@@ -20,7 +20,7 @@ const ServiceDetails = () => {
                     <ServiceItems />
                     <div className='text-center'>
                         <h1 className='text-4xl font-bold'>Price: ${price}</h1>
-                        <Link to={'/checkout'} className="btn btn-block mt-7 bg-[#ff3811]">Proceed Checkout</Link>
+                        <Link to={'/checkout'} state={{ title, price }} className="btn btn-block mt-7 bg-[#ff3811]">Proceed Checkout</Link>
                     </div>
                 </div>
             </div>
