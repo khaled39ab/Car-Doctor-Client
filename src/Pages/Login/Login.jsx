@@ -7,9 +7,10 @@ import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 const Login = () => {
     const { passwordLogin } = useContext(AuthContext);
     const [error, setError] = useState('');
-    const navigate = useNavigate();
+
     const location = useLocation();
-    
+    const navigate = useNavigate();
+
     const from = location.state?.from?.pathname || "/";
 
     const handleLogin = e => {

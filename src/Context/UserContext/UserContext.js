@@ -6,29 +6,35 @@ export const AuthContext = createContext();
 
 const UserContext = ({ children }) => {
     
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
     const facebookProvider = new FacebookAuthProvider();
 
     const googleLogin = () => {
+        setIsLoading(true)
         return signInWithPopup(auth, googleProvider);
     };
 
     const githubLogin = () => {
+        setIsLoading(true)
         return signInWithPopup(auth, githubProvider)
     };
 
     const facebookLogin = () => {
+        setIsLoading(true)
         return signInWithPopup(auth, facebookProvider)
     };
 
     const createUser = (email, password) => {
+        setIsLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     };
 
     const passwordLogin = (email, password) => {
+        setIsLoading(true)
         return signInWithEmailAndPassword(auth, email, password);
     };
 
@@ -38,15 +44,18 @@ const UserContext = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            // console.log(currentUser);
+            setIsLoading(false)
             setUser(currentUser)
         })
+
         return () => unsubscribe();
+
     }, [])
 
 
     const AuthInfo = {
         user,
+        isLoading,
         googleLogin,
         githubLogin,
         facebookLogin,

@@ -3,14 +3,18 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext/UserContext';
 
 const RequireAuth = ({ children }) => {
-    const { user } = useContext(AuthContext);
+    const { user, isLoading } = useContext(AuthContext);
     const location = useLocation();
 
-    if (user) {
-        return children;
+    if (isLoading) {
+        return <button className="btn loading">loading</button>;
     }
-    
-    return <Navigate to="/login" state={{ from: location }} replace />;
+
+    if (!user) {
+        return <Navigate to="/login" state={{ from: location }} replace />;
+    }
+
+    return children;
 };
 
 export default RequireAuth;
