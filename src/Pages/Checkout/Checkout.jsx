@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/UserContext/UserContext';
 import ServiceBanner from '../Shared/ServiceBanner/ServiceBanner';
 
@@ -12,7 +12,7 @@ const Checkout = () => {
     const { user } = useContext(AuthContext);
     const { displayName, email } = user;
 
-    const [wrong, setWrong] = useState(false);
+    const [wrongPass, setWrongPass] = useState(false);
 
 
     const handlePlaceOrder = e => {
@@ -23,14 +23,16 @@ const Checkout = () => {
         const address = form.address.value;
         const message = form.message.value;
 
-        if (phone.length < 10) {
-            return setWrong(true)
-        };
+        if (phone.length > 8 && phone.startsWith(0)) {
+            setWrongPass(true);
+            return 
+        }
 
         const order = {
             name: displayName,
             service: title,
             email,
+            price,
             phone,
             address,
             message
@@ -42,11 +44,18 @@ const Checkout = () => {
                 'content-type': 'application/json',
             },
             body: JSON.stringify(order)
-        });
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    form.reset();
+                    toast('Thanks for Your Order')
+                    navigate('/services')
+                }
+            })
+            .catch(err => console.log(err));
 
-        form.reset();
-        toast('Thanks for Your Order')
-        navigate('/services')
+
     };
 
     return (
@@ -65,7 +74,7 @@ const Checkout = () => {
 
                         <input name='phone' type="number" placeholder="Phone Number" className="input input-bordered w-full" required />
                         {
-                            wrong && <p className='text-red-600'><small>Phone Number Invalid</small></p>
+                            wrongPass && <p className='text-red-600'><small>Phone Number Invalid</small></p>
                         }
 
                         <input name='address' type="text" placeholder="Your Address" className="input input-bordered w-full" />
