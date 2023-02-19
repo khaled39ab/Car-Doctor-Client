@@ -1,6 +1,6 @@
-import { updateProfile } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import loginImg from '../../assets/images/login/login.svg'
 import { AuthContext } from '../../Context/UserContext/UserContext';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
@@ -24,16 +24,11 @@ const SignUp = () => {
 
                 addDisplayName(name)
                     .then(() => {
-                        <div className="toast toast-top toast-end">
-                            <div className="alert alert-info">
-                                <div>
-                                    <span>Check your mail.</span>
-                                </div>
-                            </div>
-                        </div>
+                        toast("Check your mail and verify.")
                     })
-                // console.log(res.user)
+                    
                 navigate('/')
+                
             })
             .catch(err => {
                 const errorMe = (err.message)

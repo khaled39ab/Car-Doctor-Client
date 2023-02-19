@@ -5,6 +5,7 @@ import Services from '../Services/Services/Services';
 import Contact from '../Contact/Contact';
 import Products from '../Products/Products/Products';
 import Testimonial from '../Testimonial/Testimonial';
+import { ToastContainer } from 'react-toastify';
 
 const Home = () => {
     return (
@@ -15,6 +16,8 @@ const Home = () => {
             <Contact />
             <Products />
             <Testimonial />
+            
+            <ToastContainer />
         </div>
     );
 };
