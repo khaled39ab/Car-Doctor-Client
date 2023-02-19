@@ -1,3 +1,4 @@
+import { updateProfile } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImg from '../../assets/images/login/login.svg'
@@ -6,17 +7,31 @@ import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const SignUp = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, addDisplayName } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleSignUp = e => {
         e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
+
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
 
         createUser(email, password)
             .then(res => {
+
+                addDisplayName(name)
+                    .then(() => {
+                        <div className="toast toast-top toast-end">
+                            <div className="alert alert-info">
+                                <div>
+                                    <span>Check your mail.</span>
+                                </div>
+                            </div>
+                        </div>
+                    })
                 // console.log(res.user)
                 navigate('/')
             })
