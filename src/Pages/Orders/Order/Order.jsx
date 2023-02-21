@@ -28,18 +28,18 @@ const Order = ({ order }) => {
                             </div>
                         </div>
                         <div>
-                            <div className="font-bold">{service}</div>
-                            <div className="text-sm opacity-50">{address}</div>
+                            <div className="text-lg font-bold">{service}</div>
+                            <div className="text-lg bg-opacity-75">{address}</div>
                         </div>
                     </div>
                 </td>
-                <td>
+                <td className='font-semibold'>
                     {name}
                     <br />
-                    <span className="badge badge-ghost badge-sm">{phone}</span>
+                    <span className="badge badge-ghost badge-md">{phone}</span>
                 </td>
-                <td>{price}</td>
-                <th>
+                <td className='font-bold'>{price}</td>
+                <th >
                     <button className="btn btn-ghost btn-xs">Pending</button>
                 </th>
             </tr>

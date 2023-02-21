@@ -20,7 +20,7 @@ const Checkout = () => {
 
         const form = e.target;
         const phone = form.phone.value;
-        const address = form.address.value;
+        const branch = form.branch.value;
         const message = form.message.value;
 
         const order = {
@@ -30,7 +30,7 @@ const Checkout = () => {
             email,
             price,
             phone,
-            address,
+            branch,
             message
         };
 
@@ -75,7 +75,14 @@ const Checkout = () => {
                             wrongNum && <p className='text-red-600'>Phone Number Invalid</p>
                         }
 
-                        <input name='address' type="text" placeholder="Your Address" className="input input-bordered w-full" />
+                        <select name='branch' className="select w-full" defaultValue={''} required>
+                            <option value={''} disabled hidden>Select Our Service Branch</option>
+                            <option value={'Azimpur'}>Azimpur</option>
+                            <option value={'Main'}>Uttara</option>
+                            <option value={'Mohakhali'}>Mohakhali</option>
+                            <option value={'Mirpur'}>Mirpur</option>
+                            <option value={'Norda'}>Norda</option>
+                        </select>
                     </div>
 
                     <textarea name='message' placeholder="Message" className="textarea textarea-bordered textarea-lg w-full mt-5" ></textarea>
