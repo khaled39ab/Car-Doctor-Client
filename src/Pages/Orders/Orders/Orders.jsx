@@ -7,7 +7,7 @@ const Orders = () => {
 
     return (
         <div className="overflow-x-auto w-full my-10">
-            <h2 className='text-3xl text-center text-blue-500 mb-5'>Your orders count: {orders.length}</h2>
+            <h2 className='text-3xl text-center text-blue-500 mb-5'>Your have {orders.length} Orders</h2>
 
             <table className="table w-full">
                 <thead>
@@ -22,7 +22,7 @@ const Orders = () => {
                         <th className='font-bold text-lg'>Service Name</th>
                         <th className='font-bold text-lg'>Customer Name</th>
                         <th className='font-bold text-lg'>Price</th>
-                        <th className='font-bold text-lg'>Message</th>
+                        <th className='font-bold text-lg'>Status</th>
                     </tr>
                 </thead>
                 {

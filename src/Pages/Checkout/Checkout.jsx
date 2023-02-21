@@ -7,10 +7,10 @@ import ServiceBanner from '../Shared/ServiceBanner/ServiceBanner';
 const Checkout = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { _id, title, price } = location.state;
-
+    
     const { user } = useContext(AuthContext);
     const { displayName, email } = user;
+    const { _id, title, price } = location?.state;
 
     const [wrongNum, setWrongNum] = useState(false);
 

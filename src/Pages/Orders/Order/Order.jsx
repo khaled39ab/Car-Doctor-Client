@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const Order = ({ order }) => {
-    const { serviceId, name, service, address, price, phone } = order;
+    const { serviceId, name, service, branch, price, phone, status } = order; //imagine value status
     const [orderService, setOrderService] = useState({});
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const Order = ({ order }) => {
                         </div>
                         <div>
                             <div className="text-lg font-bold">{service}</div>
-                            <div className="text-lg bg-opacity-75">{address}</div>
+                            <div className="text-lg bg-opacity-75">{branch}</div>
                         </div>
                     </div>
                 </td>
@@ -40,7 +40,11 @@ const Order = ({ order }) => {
                 </td>
                 <td className='font-bold'>{price}</td>
                 <th >
-                    <button className="btn btn-ghost btn-xs">Pending</button>
+                    {
+                        status ?
+                            <button className="btn btn-success btn-xs">Approved</button> :
+                            <button className="btn btn-warning btn-xs">Pending</button>
+                    }
                 </th>
             </tr>
         </tbody>
