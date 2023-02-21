@@ -7,12 +7,12 @@ import ServiceBanner from '../Shared/ServiceBanner/ServiceBanner';
 const Checkout = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { title, price } = location.state;
+    const { _id, title, price } = location.state;
 
     const { user } = useContext(AuthContext);
     const { displayName, email } = user;
 
-    const [wrongPass, setWrongPass] = useState(false);
+    const [wrongNum, setWrongNum] = useState(false);
 
 
     const handlePlaceOrder = e => {
@@ -23,12 +23,9 @@ const Checkout = () => {
         const address = form.address.value;
         const message = form.message.value;
 
-        if (phone.length > 8 && phone.startsWith(0)) {
-            setWrongPass(true);
-            return 
-        }
 
         const order = {
+            serviceId: _id,
             name: displayName,
             service: title,
             email,
@@ -38,24 +35,26 @@ const Checkout = () => {
             message
         };
 
-        fetch('http://localhost:4000/orders', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(order)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    form.reset();
-                    toast('Thanks for Your Order')
-                    navigate('/services')
-                }
+        if (phone.length < 8 && phone.startsWith(0)) {
+            setWrongNum(true);
+        } else {
+            fetch('http://localhost:4000/orders', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(order)
             })
-            .catch(err => console.log(err));
-
-
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
+                        form.reset();
+                        toast('Thanks for Your Order')
+                        navigate('/services')
+                    }
+                })
+                .catch(err => console.log(err));
+        }
     };
 
     return (
@@ -74,7 +73,7 @@ const Checkout = () => {
 
                         <input name='phone' type="number" placeholder="Phone Number" className="input input-bordered w-full" required />
                         {
-                            wrongPass && <p className='text-red-600'><small>Phone Number Invalid</small></p>
+                            wrongNum && <p className='text-red-600'><small>Phone Number Invalid</small></p>
                         }
 
                         <input name='address' type="text" placeholder="Your Address" className="input input-bordered w-full" />
