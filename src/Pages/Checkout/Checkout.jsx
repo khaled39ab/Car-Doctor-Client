@@ -23,7 +23,6 @@ const Checkout = () => {
         const address = form.address.value;
         const message = form.message.value;
 
-
         const order = {
             serviceId: _id,
             name: displayName,
@@ -34,9 +33,9 @@ const Checkout = () => {
             address,
             message
         };
-
-        if (phone.length < 8 && phone.startsWith(0)) {
-            setWrongNum(true);
+        console.log(phone.startsWith(0));
+        if (phone.length > 8 && phone.startsWith(0)) {
+            return setWrongNum(true);
         } else {
             fetch('http://localhost:4000/orders', {
                 method: 'POST',
@@ -73,7 +72,7 @@ const Checkout = () => {
 
                         <input name='phone' type="number" placeholder="Phone Number" className="input input-bordered w-full" required />
                         {
-                            wrongNum && <p className='text-red-600'><small>Phone Number Invalid</small></p>
+                            wrongNum && <p className='text-red-600'>Phone Number Invalid</p>
                         }
 
                         <input name='address' type="text" placeholder="Your Address" className="input input-bordered w-full" />
