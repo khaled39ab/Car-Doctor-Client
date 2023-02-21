@@ -1,9 +1,29 @@
 import React, { useContext } from 'react';
+import { toast } from 'react-toastify';
 import { OrderListContext } from '../../../Context/OrderContext/OrderContext';
 import Order from '../Order/Order';
 
 const Orders = () => {
-    const { orders } = useContext(OrderListContext);
+    const { orders,setOrders } = useContext(OrderListContext);
+
+    
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure to cancel this order');
+
+        if(proceed){
+            fetch(`http://localhost:4000/orders/${id}`,{
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0){
+                    toast("Order Cancel Successfully")
+                    const remaining = orders.filter(odr => odr._id !== id)
+                    setOrders(remaining)
+                }
+            })
+        }
+    };
 
     return (
         <div className="overflow-x-auto w-full my-10">
@@ -29,6 +49,7 @@ const Orders = () => {
                     orders.map(order => <Order
                         key={order._id}
                         order={order}
+                        handleDelete={handleDelete}
                     ></Order>)
                 }
             </table>

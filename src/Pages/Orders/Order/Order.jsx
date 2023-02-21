@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Order = ({ order }) => {
+const Order = ({ order, handleDelete }) => {
     const { _id, serviceId, name, service, branch, price, phone, status } = order; //imagine value status
     const [orderService, setOrderService] = useState({});
     const { img } = orderService;
@@ -11,26 +11,13 @@ const Order = ({ order }) => {
             .then(data => setOrderService(data))
     }, [serviceId]);
 
-    const handleDelete = id => {
-        const proceed = window.confirm('Are you sure to cancel this order');
-
-        if(proceed){
-            fetch(`http://localhost:4000/orders/${id}`,{
-                method: 'DELETE'
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
-        }
-    }
 
     return (
         <tbody>
             <tr className="hover">
                 <th>
                     <label>
-                        <button className="btn btn-circle btn-outline" onClick={() =>handleDelete(_id)}>
+                        <button className="btn btn-circle btn-outline" onClick={() => handleDelete(_id)}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                         </button>
                     </label>

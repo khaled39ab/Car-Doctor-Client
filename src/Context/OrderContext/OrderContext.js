@@ -22,7 +22,8 @@ const OrderContext = ({ children }) => {
 
 
     const OrderList = {
-        orders
+        orders,
+        setOrders
     }
 
     return (
