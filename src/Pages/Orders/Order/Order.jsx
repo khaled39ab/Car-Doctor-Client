@@ -15,7 +15,9 @@ const Order = ({ order }) => {
         const proceed = window.confirm('Are you sure to cancel this order');
 
         if(proceed){
-            fetch(`http://localhost:4000/orders/${id}`)
+            fetch(`http://localhost:4000/orders/${id}`,{
+                method: 'DELETE'
+            })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
