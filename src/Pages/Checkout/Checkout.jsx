@@ -33,10 +33,8 @@ const Checkout = () => {
             address,
             message
         };
-        console.log(phone.startsWith(0));
+
         if (phone.length > 8 && phone.startsWith(0)) {
-            return setWrongNum(true);
-        } else {
             fetch('http://localhost:4000/orders', {
                 method: 'POST',
                 headers: {
@@ -53,6 +51,8 @@ const Checkout = () => {
                     }
                 })
                 .catch(err => console.log(err));
+        } else {
+            return setWrongNum(true);
         }
     };
 
