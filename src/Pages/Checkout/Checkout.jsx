@@ -5,14 +5,16 @@ import { AuthContext } from '../../Context/UserContext/UserContext';
 import ServiceBanner from '../Shared/ServiceBanner/ServiceBanner';
 
 const Checkout = () => {
+    
     const location = useLocation();
     const navigate = useNavigate();
+    const [wrongNum, setWrongNum] = useState(false);
     
     const { user } = useContext(AuthContext);
     const { displayName, email } = user;
-    const { _id, title, price } = location?.state;
 
-    const [wrongNum, setWrongNum] = useState(false);
+    const { service } = location?.state;
+    const { _id, title, price } = service;
 
 
     const handlePlaceOrder = e => {

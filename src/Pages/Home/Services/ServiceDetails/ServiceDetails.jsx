@@ -20,7 +20,7 @@ const ServiceDetails = () => {
                     <ServiceItems />
                     <div className='text-center'>
                         <h1 className='text-4xl font-bold'>Price: ${price}</h1>
-                        <Link to={'/checkout'} state={{ _id, title, price }} className="btn btn-block mt-7 bg-[#ff3811]">Proceed Checkout</Link>
+                        <Link to={'/checkout'} state={{ service }} className="btn btn-block mt-7 bg-[#ff3811]">Proceed Checkout</Link>
                     </div>
                 </div>
             </div>

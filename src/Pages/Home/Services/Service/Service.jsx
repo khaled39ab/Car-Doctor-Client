@@ -14,7 +14,7 @@ const Service = ({ service }) => {
                 </h2>
                 <div className="card-actions flex justify-between absolute  transform -translate-y-1/2 left-5 right-5 bottom-0">
                     <p className="text-red-400 font-bold">Price: ${price}</p>
-                    <div className="badge badge-outline bg-red-500 border-none text-white cursor-pointer"><Link to={`/service/${_id}`}>Go ❯</Link></div>
+                    <div className="badge badge-outline bg-red-500 border-none text-white cursor-pointer"><Link to={`/service/${_id}`}>Details ❯</Link></div>
                 </div>
             </div>
         </div>
