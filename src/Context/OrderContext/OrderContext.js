@@ -18,7 +18,7 @@ const OrderContext = ({ children }) => {
                 setOrders(data)
             })
 
-    }, [user?.email]);
+    }, [user?.email, orders]);
 
 
     const OrderList = {

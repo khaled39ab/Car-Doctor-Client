@@ -44,8 +44,8 @@ const Order = ({ order, handleDelete }) => {
                 <th >
                     {
                         status ?
-                            <button className="btn btn-success btn-xs">Approved</button> :
-                            <button className="btn btn-warning btn-xs">Pending</button>
+                            <button className="btn btn-success btn-sm text-white">Approved</button> :
+                            <button className="btn btn-warning btn-sm text-white">Pending</button>
                     }
                 </th>
             </tr>
