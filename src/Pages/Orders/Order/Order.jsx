@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Order = ({ order, handleDelete }) => {
+const Order = ({ order, handleDelete, handleStatusUpdate }) => {
     const { _id, serviceId, name, service, branch, price, phone, status } = order; //imagine value status
     const [orderService, setOrderService] = useState({});
     const { img } = orderService;
@@ -41,7 +41,7 @@ const Order = ({ order, handleDelete }) => {
                     <span className="badge badge-ghost badge-md">{phone}</span>
                 </td>
                 <td className='font-bold'>{price}</td>
-                <th >
+                <th onClick={() => handleStatusUpdate(_id)}>
                     {
                         status ?
                             <button className="btn btn-success btn-sm text-white">Approved</button> :

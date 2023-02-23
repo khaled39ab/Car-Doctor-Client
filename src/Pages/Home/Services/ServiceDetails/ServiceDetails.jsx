@@ -7,7 +7,7 @@ import ServiceInfo from './ServiceInfo/ServiceInfo';
 
 const ServiceDetails = () => {
     const service = useLoaderData();
-    const { _id, title, price } = service;
+    const { price } = service;
 
     return (
         <div>

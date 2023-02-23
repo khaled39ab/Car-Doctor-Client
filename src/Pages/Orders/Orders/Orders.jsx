@@ -25,6 +25,23 @@ const Orders = () => {
         }
     };
 
+    const handleStatusUpdate = id => {
+
+        fetch(`http://localhost:4000/orders/${id}`, {
+            method: "UPDATE",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ status: 'Approved' })
+        })
+
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+
+    };
+
 
     return (
         <div className="overflow-x-auto w-full my-10">
@@ -51,6 +68,7 @@ const Orders = () => {
                         key={order._id}
                         order={order}
                         handleDelete={handleDelete}
+                        handleStatusUpdate={handleStatusUpdate}
                     ></Order>)
                 }
             </table>
