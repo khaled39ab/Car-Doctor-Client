@@ -44,7 +44,7 @@ const Order = ({ order, handleDelete, handleStatusUpdate }) => {
                 <th onClick={() => handleStatusUpdate(_id)}>
                     {
                         status ?
-                            <button className="btn btn-success btn-sm text-white">Approved</button> :
+                            <button className="btn btn-success btn-sm text-white">{status}</button> :
                             <button className="btn btn-warning btn-sm text-white">Pending</button>
                     }
                 </th>

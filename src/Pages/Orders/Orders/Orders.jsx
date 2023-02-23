@@ -28,18 +28,24 @@ const Orders = () => {
     const handleStatusUpdate = id => {
 
         fetch(`http://localhost:4000/orders/${id}`, {
-            method: "UPDATE",
+            method: "PATCH",
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify({ status: 'Approved' })
         })
-
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-            })
+                if(data.modifiedCount > 0){
+                    const remaining = orders.filter(odr => odr._id !== id)
+                const approving = orders.find(odr => odr._id === id)
+                approving.status = "Approved";
 
+                const newOrder = [approving, ...remaining]
+                setOrders(newOrder)
+                }
+            })
     };
 
 
