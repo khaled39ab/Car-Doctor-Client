@@ -36,7 +36,7 @@ const Orders = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if(data.modifiedCount > 0){
                     const remaining = orders.filter(odr => odr._id !== id)
                 const approving = orders.find(odr => odr._id === id)
@@ -69,6 +69,7 @@ const Orders = () => {
                         <th className='font-bold text-lg'>Status</th>
                     </tr>
                 </thead>
+
                 {
                     orders.map(order => <Order
                         key={order._id}
@@ -77,7 +78,9 @@ const Orders = () => {
                         handleStatusUpdate={handleStatusUpdate}
                     ></Order>)
                 }
+                
             </table>
+
         </div>
     );
 };
