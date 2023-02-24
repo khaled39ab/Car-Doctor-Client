@@ -6,7 +6,7 @@ import Contact from "../../Pages/Home/Contact/Contact";
 import Home from "../../Pages/Home/Home/Home";
 import Products from "../../Pages/Home/Products/Products/Products";
 import ServiceDetails from "../../Pages/Home/Services/ServiceDetails/ServiceDetails";
-import Services from "../../Pages/Home/Services/Services/Services";
+import ServicesPage from "../../Pages/Home/Services/ServicesPage";
 import Login from "../../Pages/Login/Login";
 import NotFound from "../../Pages/NotFound/NotFound";
 import Orders from "../../Pages/Orders/Orders/Orders";
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/services',
-                element: <Services />
+                element: <ServicesPage />
             },
             {
                 path: '/service/:id',
