@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { ItemsContext } from '../../../../Context/ServicesContext/ServicesContext';
 import Product from '../Product/Product';
 
@@ -7,7 +6,7 @@ const Products = () => {
     const { products } = useContext(ItemsContext);
 
     return (
-        <div className="py-10 bg-neutral-100">
+        <div>
             <div className='text-center'>
                 <p className="text-xl font-bold text-orange-600">Popular Products</p>
                 <h1 className='text-5xl py-5 text-black'>Browse Our Products</h1>
@@ -20,9 +19,6 @@ const Products = () => {
                         product={product}
                     ></Product>)
                 }
-            </div>
-            <div className='text-center my-10'>
-                <button className="btn btn-outline btn-secondary"><Link to={'/products'}>More Products</Link></button>
             </div>
         </div>
     );

@@ -4,7 +4,7 @@ import Checkout from "../../Pages/Checkout/Checkout";
 import About from "../../Pages/Home/About/About";
 import Contact from "../../Pages/Home/Contact/Contact";
 import Home from "../../Pages/Home/Home/Home";
-import Products from "../../Pages/Home/Products/Products/Products";
+import ProductsPage from "../../Pages/Home/Products/ProductsPage";
 import ServiceDetails from "../../Pages/Home/Services/ServiceDetails/ServiceDetails";
 import ServicesPage from "../../Pages/Home/Services/ServicesPage";
 import Login from "../../Pages/Login/Login";
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/products',
-                element: <Products />
+                element: <ProductsPage />
             },
             {
                 path: '/login',

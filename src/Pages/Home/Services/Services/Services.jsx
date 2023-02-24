@@ -7,7 +7,7 @@ const Services = () => {
     const { services } = useContext(ItemsContext);
 
     return (
-        <div className="py-10 bg-neutral-100">
+        <div>
             <div className='text-center'>
                 <p className="text-xl font-bold text-orange-600">Services</p>
                 <h1 className='text-5xl py-5 text-black'>Our Service Area</h1>

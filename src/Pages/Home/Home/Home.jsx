@@ -13,16 +13,25 @@ const Home = () => {
         <div>
             <Banner />
             <About />
-            <div>
-                {
-                    <Services />
-                }
-                <div className='text-center mb-10'>
+
+            <div className="py-10 bg-neutral-100">
+                <Services />
+
+                <div className='text-center mt-10'>
                     <button className="btn btn-outline btn-secondary"><Link to={'/services'}>More Services</Link></button>
                 </div>
             </div>
+
             <Contact />
-            <Products />
+
+            <div className="py-10 bg-neutral-100">
+                <Products />
+
+                <div className='text-center'>
+                    <button className="btn btn-outline btn-secondary"><Link to={'/products'}>More Products</Link></button>
+                </div>
+            </div>
+
             <Testimonial />
 
             <ToastContainer />
