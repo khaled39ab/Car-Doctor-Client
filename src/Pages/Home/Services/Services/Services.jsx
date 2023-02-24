@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { ItemsContext } from '../../../../Context/ServicesContext/ServicesContext';
 import Service from '../Service/Service';
 
@@ -21,10 +20,7 @@ const Services = () => {
                         service={service}
                     ></Service>)
                 }
-            </div>
-            <div className='text-center my-10'>
-                <button className="btn btn-outline btn-secondary"><Link to={'/services'}>More Services</Link></button>
-            </div>
+            </div>            
         </div>
     );
 };
