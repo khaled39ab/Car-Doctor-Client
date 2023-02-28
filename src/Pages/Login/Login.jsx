@@ -37,8 +37,8 @@ const Login = () => {
                     .then(result => result.json())
                     .then(data => {
                         localStorage.setItem('car-token', data.carToken)
-                        navigate(from, { replace: true })
                     })
+                navigate(from, { replace: true })
 
             })
             .catch(err => {

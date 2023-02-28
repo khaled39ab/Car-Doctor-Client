@@ -5,7 +5,7 @@ export const OrderListContext = createContext()
 
 const OrderContext = ({ children }) => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const [orders, setOrders] = useState([]);
 
@@ -17,12 +17,18 @@ const OrderContext = ({ children }) => {
                 authorization: `Bearer ${localStorage.getItem('car-token')}`
             }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    logOut()
+                }
+                return res.json()
+            })
             .then(data => {
+                console.log('data', data);
                 setOrders(data)
             })
 
-    }, [user?.email, orders]);
+    }, [user?.email, logOut]);
 
 
     const OrderList = {

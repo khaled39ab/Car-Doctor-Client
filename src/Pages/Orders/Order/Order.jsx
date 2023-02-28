@@ -31,7 +31,7 @@ const Order = ({ order, handleDelete, handleStatusUpdate }) => {
                         </div>
                         <div>
                             <div className="text-lg font-bold">{service}</div>
-                            <div className="text-lg bg-opacity-75">{branch}</div>
+                            <div className="text-lg bg-opacity-75">Branch: {branch} </div>
                         </div>
                     </div>
                 </td>
