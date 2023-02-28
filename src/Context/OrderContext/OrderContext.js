@@ -12,7 +12,11 @@ const OrderContext = ({ children }) => {
     useEffect(() => {
         const uri = `http://localhost:4000/orders?email=${user?.email}`;
 
-        fetch(uri)
+        fetch(uri, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('car-token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setOrders(data)
