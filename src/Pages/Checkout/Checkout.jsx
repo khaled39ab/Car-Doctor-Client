@@ -37,7 +37,7 @@ const Checkout = () => {
         };
 
         if (phone.length > 8 && phone.startsWith(0)) {
-            fetch('http://localhost:4000/orders', {
+            fetch('https://car-doctor-server-sandy.vercel.app/orders', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

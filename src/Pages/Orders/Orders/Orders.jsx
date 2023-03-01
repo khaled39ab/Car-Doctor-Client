@@ -11,7 +11,7 @@ const Orders = () => {
         const proceed = window.confirm('Are you sure to cancel this order');
 
         if (proceed) {
-            fetch(`http://localhost:4000/orders/${id}`, {
+            fetch(`https://car-doctor-server-sandy.vercel.app/orders/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -27,7 +27,7 @@ const Orders = () => {
 
     const handleStatusUpdate = id => {
 
-        fetch(`http://localhost:4000/orders/${id}`, {
+        fetch(`https://car-doctor-server-sandy.vercel.app/orders/${id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'

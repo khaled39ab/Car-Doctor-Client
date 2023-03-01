@@ -66,7 +66,7 @@ const UserContext = ({ children }) => {
         };
 
         //get jwt token
-        await fetch('http://localhost:4000/jwt', {
+        await fetch('https://car-doctor-server-sandy.vercel.app/jwt', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

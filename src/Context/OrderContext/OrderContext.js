@@ -11,7 +11,7 @@ const OrderContext = ({ children }) => {
 
 
     /* useEffect(() => {
-        const uri = `http://localhost:4000/orders?email=${user?.email}`;
+        const uri = `https://car-doctor-server-sandy.vercel.app/orders?email=${user?.email}`;
 
         fetch(uri, {
             headers: {
@@ -30,7 +30,7 @@ const OrderContext = ({ children }) => {
 
     }, [user?.email, logOut]); */
     useEffect(() => {
-        fetch(`http://localhost:4000/orders?email=${user?.email}`, {
+        fetch(`https://car-doctor-server-sandy.vercel.app/orders?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('genius-token')}`
             }
