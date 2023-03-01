@@ -45,7 +45,7 @@ const UserContext = ({ children }) => {
     };
 
     const logOut = () => {
-        localStorage.removeItem('car-token')
+        // localStorage.removeItem('car-token');
         return signOut(auth)
     }
 
@@ -60,13 +60,13 @@ const UserContext = ({ children }) => {
     }, []);
 
 
-    const getToken = async (res) => {
+    const getToken =  (user) => {
         const currentUser = {
-            email: res.user.email
+            email: user.email
         };
 
         //get jwt token
-        await fetch('https://car-doctor-server-sandy.vercel.app/jwt', {
+        fetch('http://localhost:4000/jwt', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

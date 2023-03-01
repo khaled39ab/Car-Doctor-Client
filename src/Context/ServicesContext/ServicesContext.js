@@ -9,7 +9,7 @@ const ServicesContext = ({ children }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('https://car-doctor-server-sandy.vercel.app/services')
+        fetch('http://localhost:4000/services')
             .then(res => res.json())
             .then(data => setServices(data))
             .catch(err => console.log(err))
@@ -17,7 +17,7 @@ const ServicesContext = ({ children }) => {
 
 
     useEffect(() => {
-        fetch('https://car-doctor-server-sandy.vercel.app/products')
+        fetch('http://localhost:4000/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, []);

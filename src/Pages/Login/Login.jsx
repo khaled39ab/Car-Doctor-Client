@@ -20,9 +20,9 @@ const Login = () => {
 
         passwordLogin(email, password)
             .then(res => {
-                // console.log(res.user)
+                const user = res.user
 
-                getToken(res)
+                getToken(user)
                 navigate(from, { replace: true })
 
             })

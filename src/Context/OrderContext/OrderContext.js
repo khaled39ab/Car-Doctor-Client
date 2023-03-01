@@ -10,8 +10,8 @@ const OrderContext = ({ children }) => {
     const [orders, setOrders] = useState([]);
 
 
-    /* useEffect(() => {
-        const uri = `https://car-doctor-server-sandy.vercel.app/orders?email=${user?.email}`;
+    useEffect(() => {
+        const uri = `http://localhost:4000/orders?email=${user?.email}`;
 
         fetch(uri, {
             headers: {
@@ -28,23 +28,7 @@ const OrderContext = ({ children }) => {
                 setOrders(data);
             });
 
-    }, [user?.email, logOut]); */
-    useEffect(() => {
-        fetch(`https://car-doctor-server-sandy.vercel.app/orders?email=${user?.email}`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('genius-token')}`
-            }
-        })
-            .then(res => {
-                if (res.status === 401 || res.status === 403) {
-                    return logOut();
-                }
-                return res.json();
-            })
-            .then(data => {
-                setOrders(data);
-            })
-    }, [user?.email, logOut])
+    }, [user?.email, logOut]);
 
 
 
