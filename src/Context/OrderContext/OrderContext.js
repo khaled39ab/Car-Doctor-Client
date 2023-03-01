@@ -9,7 +9,8 @@ const OrderContext = ({ children }) => {
 
     const [orders, setOrders] = useState([]);
 
-    useEffect(() => {
+
+    /* useEffect(() => {
         const uri = `http://localhost:4000/orders?email=${user?.email}`;
 
         fetch(uri, {
@@ -21,14 +22,30 @@ const OrderContext = ({ children }) => {
                 if (res.status === 401 || res.status === 403) {
                     return logOut()
                 }
-                return res.json()
+                return res.json();
             })
             .then(data => {
-                // console.log('data', data);
-                setOrders(data)
-            })
+                setOrders(data);
+            });
 
-    }, [user?.email,  logOut]);
+    }, [user?.email, logOut]); */
+    useEffect(() => {
+        fetch(`http://localhost:4000/orders?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('genius-token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
+                }
+                return res.json();
+            })
+            .then(data => {
+                setOrders(data);
+            })
+    }, [user?.email, logOut])
+
 
 
     const OrderList = {
