@@ -5,7 +5,7 @@ import { AuthContext } from '../../Context/UserContext/UserContext';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
-    const { passwordLogin } = useContext(AuthContext);
+    const { passwordLogin, getToken } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const location = useLocation();
@@ -22,22 +22,7 @@ const Login = () => {
             .then(res => {
                 // console.log(res.user)
 
-                const currentUser = {
-                    email: res.user.email
-                };
-
-                //get jwt token
-                fetch('http://localhost:4000/jwt', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(result => result.json())
-                    .then(data => {
-                        localStorage.setItem('car-token', data.carToken)
-                    })
+                getToken(res);
                 navigate(from, { replace: true })
 
             })

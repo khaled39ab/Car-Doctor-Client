@@ -19,16 +19,16 @@ const OrderContext = ({ children }) => {
         })
             .then(res => {
                 if (res.status === 401 || res.status === 403) {
-                    logOut()
+                    return logOut()
                 }
                 return res.json()
             })
             .then(data => {
-                console.log('data', data);
+                // console.log('data', data);
                 setOrders(data)
             })
 
-    }, [user?.email, logOut]);
+    }, [user?.email,  logOut]);
 
 
     const OrderList = {

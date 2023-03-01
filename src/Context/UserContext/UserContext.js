@@ -5,7 +5,7 @@ import auth from "../../firebase/firebase.config";
 export const AuthContext = createContext();
 
 const UserContext = ({ children }) => {
-    
+
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -38,7 +38,7 @@ const UserContext = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     };
 
-    const addDisplayName = (name) =>{
+    const addDisplayName = (name) => {
         return updateProfile(auth.currentUser, {
             displayName: name
         })
@@ -56,7 +56,27 @@ const UserContext = ({ children }) => {
 
         return () => unsubscribe();
 
-    }, [])
+    }, []);
+
+
+    const getToken = async (res) => {
+        const currentUser = {
+            email: res.user.email
+        };
+
+        //get jwt token
+        await fetch('http://localhost:4000/jwt', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(currentUser)
+        })
+            .then(result => result.json())
+            .then(data => {
+                localStorage.setItem('car-token', data.carToken)
+            })
+    };
 
 
     const AuthInfo = {
@@ -69,6 +89,7 @@ const UserContext = ({ children }) => {
         passwordLogin,
         addDisplayName,
         logOut,
+        getToken
     };
 
     return (
