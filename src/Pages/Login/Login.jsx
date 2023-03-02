@@ -22,7 +22,7 @@ const Login = () => {
             .then(res => {
                 const user = res.user
 
-                getToken(user)
+                // getToken(user)
                 navigate(from, { replace: true })
 
             })

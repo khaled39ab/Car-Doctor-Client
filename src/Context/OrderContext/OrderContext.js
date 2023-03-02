@@ -14,14 +14,14 @@ const OrderContext = ({ children }) => {
         const uri = `http://localhost:4000/orders?email=${user?.email}`;
 
         fetch(uri, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('car-token')}`
-            }
+            // headers: {
+            //     authorization: `Bearer ${localStorage.getItem('car-token')}`
+            // }
         })
             .then(res => {
-                if (res.status === 401 || res.status === 403) {
-                    return logOut()
-                }
+                // if (res.status === 401 || res.status === 403) {
+                //     return logOut()
+                // }
                 return res.json();
             })
             .then(data => {
