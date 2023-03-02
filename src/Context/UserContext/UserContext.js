@@ -45,7 +45,7 @@ const UserContext = ({ children }) => {
     };
 
     const logOut = () => {
-        // localStorage.removeItem('car-token');
+        localStorage.removeItem('car-token');
         return signOut(auth)
     }
 
@@ -60,7 +60,7 @@ const UserContext = ({ children }) => {
     }, []);
 
 
-   /*  const getToken =  (user) => {
+    const getToken =  (user) => {
         const currentUser = {
             email: user.email
         };
@@ -78,7 +78,7 @@ const UserContext = ({ children }) => {
                 localStorage.setItem('car-token', data.carToken)
             })
     };
- */
+
 
     const AuthInfo = {
         user,
@@ -90,7 +90,7 @@ const UserContext = ({ children }) => {
         passwordLogin,
         addDisplayName,
         logOut,
-        // getToken
+        getToken
     };
 
     return (

@@ -19,10 +19,10 @@ const Login = () => {
         const password = e.target.password.value;
 
         passwordLogin(email, password)
-            .then(res => {
+            .then(async res => {
                 const user = res.user
 
-                // getToken(user)
+                await getToken(user)
                 navigate(from, { replace: true })
 
             })
