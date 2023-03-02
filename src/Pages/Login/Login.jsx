@@ -21,8 +21,24 @@ const Login = () => {
         passwordLogin(email, password)
             .then(async res => {
                 const user = res.user
+                // await getToken(user)
 
-                await getToken(user)
+                const currentEmail = {
+                    email: user.email
+                };
+
+                fetch(`http://localhost:4000/jwtCar`, {
+                    method: "POST",
+                    headers:{
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentEmail)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                })
+
                 navigate(from, { replace: true })
 
             })
