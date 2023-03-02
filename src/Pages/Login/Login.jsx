@@ -29,17 +29,18 @@ const Login = () => {
 
                 fetch(`http://localhost:4000/jwtCar`, {
                     method: "POST",
-                    headers:{
+                    headers: {
                         'content-type': 'application/json'
                     },
                     body: JSON.stringify(currentEmail)
                 })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                })
-
-                navigate(from, { replace: true })
+                    .then(res => {
+                        return res.json()
+                    })
+                    .then(data => {
+                        localStorage.setItem('car-token', data.token)
+                        navigate(from, { replace: true })
+                    });
 
             })
             .catch(err => {
