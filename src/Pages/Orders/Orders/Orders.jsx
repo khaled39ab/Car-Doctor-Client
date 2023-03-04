@@ -1,10 +1,32 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { OrderListContext } from '../../../Context/OrderContext/OrderContext';
+// import { OrderListContext } from '../../../Context/OrderContext/OrderContext';
+import { AuthContext } from '../../../Context/UserContext/UserContext';
 import Order from '../Order/Order';
 
 const Orders = () => {
-    const { orders, setOrders } = useContext(OrderListContext);
+    // const { orders, setOrders } = useContext(OrderListContext);
+    const { user, logOut } = useContext(AuthContext);
+
+
+    const [orders, setOrders] = useState([]);
+
+
+    useEffect(() => {
+        const uri = `http://localhost:4000/orders?email=${user?.email}`;
+
+        fetch(uri, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('car-token')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                setOrders(data);
+            });
+
+    }, [user?.email]);
+
 
 
     const handleDelete = id => {
