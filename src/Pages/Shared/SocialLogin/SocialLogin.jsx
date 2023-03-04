@@ -8,8 +8,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const SocialLogin = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    
-    const { googleLogin, githubLogin, facebookLogin } = useContext(AuthContext);
+
+    const { googleLogin, githubLogin, facebookLogin, getJWTToken } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const from = location.state?.from?.pathname || "/";
@@ -18,6 +18,8 @@ const SocialLogin = () => {
     const handleFacebookLogin = () => {
         facebookLogin()
             .then(res => {
+                const user = res.user;
+                getJWTToken(user)
                 navigate(from, { replace: true })
             })
             .catch(err => {
@@ -29,6 +31,8 @@ const SocialLogin = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(res => {
+                const user = res.user;
+                getJWTToken(user)
                 navigate(from, { replace: true })
             })
             .catch(err => {
@@ -40,6 +44,8 @@ const SocialLogin = () => {
     const handleGithubLogin = () => {
         githubLogin()
             .then(res => {
+                const user = res.user;
+                getJWTToken(user)
                 navigate(from, { replace: true })
             })
             .catch(err => {

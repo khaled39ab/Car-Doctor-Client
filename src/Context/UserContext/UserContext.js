@@ -60,6 +60,27 @@ const UserContext = ({ children }) => {
     }, []);
 
 
+    const getJWTToken = (user) =>{
+
+        const currentEmail = {
+            email: user.email
+        };
+
+        fetch(`http://localhost:4000/jwtCar`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(currentEmail)
+        })
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                localStorage.setItem('car-token', data.token)
+            });
+    };
+
 
     const AuthInfo = {
         user,
@@ -71,7 +92,7 @@ const UserContext = ({ children }) => {
         passwordLogin,
         addDisplayName,
         logOut,
-        // getToken
+        getJWTToken
     };
 
     return (

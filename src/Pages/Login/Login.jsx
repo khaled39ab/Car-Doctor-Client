@@ -5,7 +5,7 @@ import { AuthContext } from '../../Context/UserContext/UserContext';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
-    const { passwordLogin, getToken } = useContext(AuthContext);
+    const { passwordLogin, getJWTToken } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const location = useLocation();
@@ -21,26 +21,8 @@ const Login = () => {
         passwordLogin(email, password)
             .then(res => {
                 const user = res.user;
-
-                const currentEmail = {
-                    email: user.email
-                };
-
-                fetch(`http://localhost:4000/jwtCar`, {
-                    method: "POST",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentEmail)
-                })
-                    .then(res => {
-                        return res.json()
-                    })
-                    .then(data => {
-                        localStorage.setItem('car-token', data.token)
-                        navigate(from, { replace: true })
-                    });
-
+                getJWTToken(user)
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 const errorMe = (err.message)
