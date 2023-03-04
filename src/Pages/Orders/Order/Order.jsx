@@ -6,7 +6,7 @@ const Order = ({ order, handleDelete, handleStatusUpdate }) => {
     const { img } = orderService;
 
     useEffect(() => {
-        fetch(`http://localhost:4000/service/${serviceId}`)
+        fetch(`https://car-doctor-server-sandy.vercel.app/service/${serviceId}`)
             .then(res => res.json())
             .then(data => setOrderService(data))
     }, [serviceId]);

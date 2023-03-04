@@ -45,7 +45,7 @@ const UserContext = ({ children }) => {
     };
 
     const logOut = () => {
-        localStorage.removeItem('car-token');
+        // localStorage.removeItem('car-token');
         return signOut(auth)
     }
 
@@ -66,7 +66,7 @@ const UserContext = ({ children }) => {
             email: user.email
         };
 
-        fetch(`http://localhost:4000/jwtCar`, {
+        fetch(`https://car-doctor-server-sandy.vercel.app/jwtCar`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

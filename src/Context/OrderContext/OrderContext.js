@@ -5,13 +5,13 @@ export const OrderListContext = createContext()
 
 const OrderContext = ({ children }) => {
 
-    const { user, logOut } = useContext(AuthContext);
+    // const { user, logOut } = useContext(AuthContext);
 
     const [orders, setOrders] = useState([]);
 
     /* 
         useEffect(() => {
-            const uri = `http://localhost:4000/orders?email=${user?.email}`;
+            const uri = `https://car-doctor-server-sandy.vercel.app/orders?email=${user?.email}`;
     
             fetch(uri, {
                 headers: {

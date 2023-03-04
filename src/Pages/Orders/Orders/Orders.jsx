@@ -13,7 +13,7 @@ const Orders = () => {
 
 
     useEffect(() => {
-        const uri = `http://localhost:4000/orders?email=${user?.email}`;
+        const uri = `https://car-doctor-server-sandy.vercel.app/orders?email=${user?.email}`;
 
         fetch(uri, {
             headers: {
@@ -38,7 +38,7 @@ const Orders = () => {
         const proceed = window.confirm('Are you sure to cancel this order');
 
         if (proceed) {
-            fetch(`http://localhost:4000/orders/${id}`, {
+            fetch(`https://car-doctor-server-sandy.vercel.app/orders/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('car-token')}`
@@ -57,7 +57,7 @@ const Orders = () => {
 
     const handleStatusUpdate = id => {
 
-        fetch(`http://localhost:4000/orders/${id}`, {
+        fetch(`https://car-doctor-server-sandy.vercel.app/orders/${id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json',
