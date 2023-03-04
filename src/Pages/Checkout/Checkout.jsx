@@ -5,11 +5,11 @@ import { AuthContext } from '../../Context/UserContext/UserContext';
 import ServiceBanner from '../Shared/ServiceBanner/ServiceBanner';
 
 const Checkout = () => {
-    
+
     const location = useLocation();
     const navigate = useNavigate();
     const [wrongNum, setWrongNum] = useState(false);
-    
+
     const { user } = useContext(AuthContext);
     const { displayName, email } = user;
 
@@ -41,6 +41,7 @@ const Checkout = () => {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('car-token')}`
                 },
                 body: JSON.stringify(order)
             })

@@ -19,9 +19,8 @@ const Login = () => {
         const password = e.target.password.value;
 
         passwordLogin(email, password)
-            .then(async res => {
-                const user = res.user
-                // await getToken(user)
+            .then(res => {
+                const user = res.user;
 
                 const currentEmail = {
                     email: user.email

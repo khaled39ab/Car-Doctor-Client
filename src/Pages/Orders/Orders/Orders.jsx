@@ -20,12 +20,17 @@ const Orders = () => {
                 authorization: `Bearer ${localStorage.getItem('car-token')}`
             }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut()
+                }
+                return res.json();
+            })
             .then(data => {
                 setOrders(data);
             });
 
-    }, [user?.email]);
+    }, [user?.email, logOut]);
 
 
 
@@ -34,12 +39,15 @@ const Orders = () => {
 
         if (proceed) {
             fetch(`http://localhost:4000/orders/${id}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('car-token')}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        toast("Order Cancel Successfully")
+                        toast("Order Deleted Successfully")
                         const remaining = orders.filter(odr => odr._id !== id)
                         setOrders(remaining)
                     }
@@ -52,7 +60,8 @@ const Orders = () => {
         fetch(`http://localhost:4000/orders/${id}`, {
             method: "PATCH",
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('car-token')}`
             },
             body: JSON.stringify({ status: 'Approved' })
         })

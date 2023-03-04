@@ -45,7 +45,7 @@ const UserContext = ({ children }) => {
     };
 
     const logOut = () => {
-        // localStorage.removeItem('car-token');
+        localStorage.removeItem('car-token');
         return signOut(auth)
     }
 
@@ -59,25 +59,6 @@ const UserContext = ({ children }) => {
 
     }, []);
 
-
-    /* const getToken =  (user) => {
-        const currentUser = {
-            email: user.email
-        };
-
-        //get jwt token
-        fetch('http://localhost:4000/jwt', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(currentUser)
-        })
-            .then(result => result.json())
-            .then(data => {
-                localStorage.setItem('car-token', data.carToken)
-            })
-    }; */
 
 
     const AuthInfo = {
